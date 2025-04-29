@@ -1,25 +1,8 @@
-import arcade
+from tkinter import *
 
-WINDOW_WIDTH = 1280
-WINDOW_HEIGHT = 720
-WINDOW_TITLE = "Main - ClickLab"
+# Création de la fenêtre principale (Main Window)
+fenetre = Tk()
+fenetre.title('Main - ClickLab')
+fenetre.geometry('1280x720')
 
-class GameView(arcade.Window):
-    
-    def __init__(self):
-        
-        super().__init__(WINDOW_WIDTH, WINDOW_HEIGHT, WINDOW_TITLE)
-
-        self.background_color = arcade.csscolor.BLACK
-        
-    def on_draw(self):
-       
-       self.clear()
-       
-def main():
-    window = GameView()
-    window.setup()
-    arcade.run()
-        
-if __name__ == "__main__":
-    main()
+fenetre.mainloop()
