@@ -23,24 +23,19 @@ canvas.pack()
 # et on lui ajoute un tag (voir fonction coords dans la
 # fonction detect_clic)
 cookie = canvas.create_image(190, 100, anchor=NW, image=photo, tags="cookie")
-
-
            
 compteur_click = 0
-
-
 
 
 def compte_click(event):
     global compteur_click
     x , y = event.x, event.y
     # renvoie la position de l'image sous la forme [x, y] :
-    cookie_coords = canvas.coords("cookie")
+    fiole_coords = canvas.coords("cookie")
  
     # détection du clic sur l'image :
-    if x >= cookie_coords[0] and x <= cookie_coords[0] + image.size[0]:
-        if y >= cookie_coords[1] and y <= cookie_coords[1] + image.size[1]:
-            print("fiole cliquée !")
+    if x >= fiole_coords[0] and x <= fiole_coords[0] + image.size[0]:
+        if y >= fiole_coords[1] and y <= fiole_coords[1] + image.size[1]:
             compteur_click += 1
             texte.set(compteur_click)
    
@@ -52,9 +47,6 @@ labelResultat = Label(fn, text = "Nombre de clicks :", textvariable = texte, fg 
 Button(fn,text="Lootbox",command=fn.destroy).place(x=100,y=400)
 Button(fn,text="Lootbox",command=fn.destroy).place(x=430,y=400)
 Button(fn,text="Nombre de click :",command=compte_click).place(x=0,y=400)
-
-
-
 
 
 
