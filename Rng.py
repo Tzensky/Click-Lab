@@ -1,38 +1,94 @@
+
 from tkinter import *
 import random
 import time
-import tkinter.font as font
+import tkinter.font as tkFont
+from PIL import Image, ImageTk 
 
-unit = 100
+#Non variable
+recherche = 100
 listeCompetence = ["competence1","competence2","competence3"]
+listeLootBox = ["LootBox Rare"]
 
 # Création de la fenêtre principale (Main Window)
 fenetre = Tk()
-fenetre.title('Rng - ClickLab')
+fenetre.title('LootBox - ClickLab')
 fenetre.geometry('1280x720')
 fenetre.resizable(width=False , height=False)
+my_font = tkFont.Font(size= 14)
 
-def nouveauLancer():
-    global unit
-    if unit >= 100 :
-        for i in range(10):
-            texte.set(random.choice(listeCompetence))
-        unit -= 100
+def nouveau_lancer():
+    '''
+    
+    Cette fonction permet de générer un nouveau lancer aléatoire dans la liste des compétences
+    
+    '''
+    
+    global recherche
+    if recherche >= 100 :
+        texte_loot.set(random.choice(listeCompetence))
+        recherche -= 100
+        print(recherche)
     else :
-        texte.set("Pas assez d'unit.")
+        texte_loot.set("Pas assez de recherche, il vous en reste : " + str(recherche))          #Trouver un moyen de mettre le nb de recherche
         
-f = font.Font(size= 20)
+def detec_clic(event):
+    '''
+    
+    Cette fonction permet la detection de clic au niveau du canvas LootBox 1
+    
+    '''
+    
+    x , y = event.x, event.y
+    
+    # renvoie la position de l'image sous la forme [x, y] :
+    LootBox1_coords = canvas.coords("LootBox1")
+ 
+    # détection du clic sur l'image et si clic au bon endroit lance la def nouveau_lancer:
+    if x >= LootBox1_coords[0] and x <= LootBox1_coords[0] + image.size[0]:
+        if y >= LootBox1_coords[1] and y <= LootBox1_coords[1] + image.size[1]:
+            lootBox_choisie(listeLootBox[0])
+            nouveau_lancer()
 
-boutonLancer = Button(fenetre, text ='Lancer - Prix 100', command = nouveauLancer)
-boutonLancer['font'] = f
-boutonLancer.place(x= 620 , y= 370)
+def lootBox_choisie(rarete):
+    
+    '''
+    
+    Cette fonction permet de montrer quel LootBox a été choisie
+    
+    Paramètre :
+    
+    Rareté de la LootBox (Voir listeLootBox)
+    
+    '''
+    
+    texte_depart.set("Vous avez choisie la " + str(rarete))
+    print('fait !!')
+    
 
-texte = StringVar()
-texte.set("Bienvenue dans le shop de competence.")
-labelLancer = Label(fenetre, textvariable = texte, fg ='Black', bg ='white')
-labelLancer['font']=f
-labelLancer.place(x= 630 , y= 350)
+image = Image.open('C:\\Users\\Utiliasteur\\OneDrive\\Images\\Captures d’écran\\ImgCoffreRare.png')
+photo = ImageTk.PhotoImage(image)
 
+canvas = Canvas(fenetre, width=1024, height=1024)
+canvas.place(x= 0 ,y= 0)
+
+#Création de l'image LootBox1 avec le tags 'LootBox1' qui est utiliser dans la def detec_clic pour la commande canvas.coords()
+LootBox1 = canvas.create_image(0, 0, anchor=NW, image=photo, tags="LootBox1")
+
+#Texte en bas de l'écran avec les informations importantes + changement avec def nouveau_lancer
+texte_depart = StringVar()
+texte_depart.set("Bienvenue dans le shop de competence. Veuillez choisir une lootbox !")
+labelDepart = Label(fenetre, textvariable = texte_depart, fg ='Black', bg ='white',font= my_font,width= 120, height= 3)
+labelDepart.place(x= 0 , y= 650)
+
+#Deuxieme ligne de texte pour les loots des competences
+texte_loot = StringVar()
+texte_loot.set("En attente")
+label_loot = Label(fenetre, textvariable = texte_loot, fg ='Black', bg ='white',font= my_font,width= 120, height= 3)
+label_loot.place(x= 0 , y= 580)
+
+#Permet de savoir ou est le clic "<Button-1>" (clic gauche)
+canvas.bind("<Button-1>", detec_clic)      
 
 
 fenetre.mainloop()
