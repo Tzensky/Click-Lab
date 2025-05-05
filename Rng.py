@@ -66,7 +66,7 @@ def lootBox_choisie(rarete):
     print('fait !!')
     
 
-image = Image.open('C:\\Users\\Utiliasteur\\OneDrive\\Images\\Captures d’écran\\ImgCoffreRare.png')
+image = Image.open('ImgCoffreRare.png')
 photo = ImageTk.PhotoImage(image)
 
 canvas = Canvas(fenetre, width=1024, height=1024)
