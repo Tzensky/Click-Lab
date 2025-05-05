@@ -11,7 +11,7 @@ fn.resizable(width=False, height=False)
  
 # j'ai modifié le nom du fichier
 # pour tester de mon côté
-image = Image.open("c:\\Users\\Gaby\\Pictures\\Screenshots\\fiole.png")
+image = Image.open("fiole.png")
 photo = ImageTk.PhotoImage(image)
    
 # canvas plus grand que l'image
