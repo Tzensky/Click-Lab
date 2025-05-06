@@ -15,7 +15,7 @@ fenetre = Tk()
 fenetre.title('LootBox - ClickLab')
 fenetre.geometry('1280x720')
 fenetre.resizable(width=False , height=False)
-fenetre.configure(bg= "Dark Blue")
+fenetre.configure(bg= "light blue")
 my_font = tkFont.Font(size= 14)
 
 def nouveau_lancer():
@@ -81,13 +81,13 @@ LootBox1 = canvas.create_image(0, 0, anchor=NW, image=photo, tags="LootBox1")
 #Texte en bas de l'écran avec les informations importantes + changement avec def nouveau_lancer
 texte_depart = StringVar()
 texte_depart.set("Bienvenue dans le shop de competence. Veuillez choisir une lootbox !")
-labelDepart = Label(fenetre, textvariable = texte_depart, fg ='Black', bg ='white',font= my_font,width= 120, height= 3)
+labelDepart = Label(fenetre, textvariable = texte_depart, fg ='Black', bg ='light blue',font= my_font, width= 120, height= 3)
 labelDepart.place(x= 0 , y= 580)
 
 #Deuxieme ligne de texte pour les loots des competences
 texte_loot = StringVar()
 texte_loot.set("En attente du choix de la LootBox.")
-label_loot = Label(fenetre, textvariable = texte_loot, fg ='Black', bg ='white',font= my_font,width= 120, height= 3)
+label_loot = Label(fenetre, textvariable = texte_loot, fg ='Black', bg ='light blue',font= my_font, width= 120, height= 3)
 label_loot.place(x= 0 , y= 650)
 
 #Permet de savoir ou est le clic "<Button-1>" (clic gauche)
