@@ -15,6 +15,7 @@ fenetre = Tk()
 fenetre.title('LootBox - ClickLab')
 fenetre.geometry('1280x720')
 fenetre.resizable(width=False , height=False)
+fenetre.configure(bg= "Dark Blue")
 my_font = tkFont.Font(size= 14)
 
 def nouveau_lancer():
@@ -71,7 +72,7 @@ def lootBox_choisie(rarete):
 image = Image.open('ImgCoffreRare.png')
 photo = ImageTk.PhotoImage(image)
 
-canvas = Canvas(fenetre, width=1024, height=1024)
+canvas = Canvas(fenetre, width=140, height=150)
 canvas.place(x= 0 ,y= 0)
 
 #Création de l'image LootBox1 avec le tags 'LootBox1' qui est utiliser dans la def detec_clic pour la commande canvas.coords()
