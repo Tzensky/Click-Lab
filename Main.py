@@ -28,6 +28,7 @@ compteur_click = 0
 
 
 def compte_click(event):
+    
     global compteur_click
     x , y = event.x, event.y
     # renvoie la position de l'image sous la forme [x, y] :
@@ -37,7 +38,7 @@ def compte_click(event):
     if x >= fiole_coords[0] and x <= fiole_coords[0] + image.size[0]:
         if y >= fiole_coords[1] and y <= fiole_coords[1] + image.size[1]:
             compteur_click += 1
-            texte.set(compteur_click)
+            texte.set(text = "Nombre de recherche :" + str(compteur_click))
    
    
 # Création d'un widget Label (texte 'Résultat -> x')
