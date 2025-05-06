@@ -6,8 +6,8 @@ import tkinter.font as tkFont
 from PIL import Image, ImageTk 
 
 #Non variable
-recherche = 100
-listeCompetence = ["competence1","competence2","competence3"]
+recherche = 10000
+listeCompetenceLootBoxRare = ["competence1","competence2","competence3"]
 listeLootBox = ["LootBox Rare"]
 
 # Création de la fenêtre principale (Main Window)
@@ -22,15 +22,18 @@ def nouveau_lancer():
     
     Cette fonction permet de générer un nouveau lancer aléatoire dans la liste des compétences
     
-    '''
-    
+    ''' 
     global recherche
     if recherche >= 100 :
-        texte_loot.set(random.choice(listeCompetence))
-        recherche -= 100
-        print(recherche)
+        if len(listeCompetenceLootBoxRare) != 0 :
+            competence_choisie = random.choice(listeCompetenceLootBoxRare)
+            texte_loot.set(competence_choisie)
+            listeCompetenceLootBoxRare.remove(competence_choisie)
+            recherche -= 100
+        else :
+            texte_loot.set("Vous avez acheté toutes les compétences de cette LootBox")
     else :
-        texte_loot.set("Pas assez de recherche, il vous en reste : " + str(recherche))          #Trouver un moyen de mettre le nb de recherche
+        texte_loot.set("Pas assez de recherche, il vous en reste : " + str(recherche))
         
 def detec_clic(event):
     '''
@@ -63,7 +66,6 @@ def lootBox_choisie(rarete):
     '''
     
     texte_depart.set("Vous avez choisie la " + str(rarete))
-    print('fait !!')
     
 
 image = Image.open('ImgCoffreRare.png')
@@ -79,13 +81,13 @@ LootBox1 = canvas.create_image(0, 0, anchor=NW, image=photo, tags="LootBox1")
 texte_depart = StringVar()
 texte_depart.set("Bienvenue dans le shop de competence. Veuillez choisir une lootbox !")
 labelDepart = Label(fenetre, textvariable = texte_depart, fg ='Black', bg ='white',font= my_font,width= 120, height= 3)
-labelDepart.place(x= 0 , y= 650)
+labelDepart.place(x= 0 , y= 580)
 
 #Deuxieme ligne de texte pour les loots des competences
 texte_loot = StringVar()
-texte_loot.set("En attente")
+texte_loot.set("En attente du choix de la LootBox.")
 label_loot = Label(fenetre, textvariable = texte_loot, fg ='Black', bg ='white',font= my_font,width= 120, height= 3)
-label_loot.place(x= 0 , y= 580)
+label_loot.place(x= 0 , y= 650)
 
 #Permet de savoir ou est le clic "<Button-1>" (clic gauche)
 canvas.bind("<Button-1>", detec_clic)      
