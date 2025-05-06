@@ -6,7 +6,6 @@ import threading
 
 
 
-
 fn = Tk()
 fn.title("Calculatrice")
 fn.geometry("1280x720")
@@ -17,7 +16,7 @@ fn.configure(bg = "light blue")
 my_font = tkFont.Font(size= 20)
 
 
-image = Image.open("/home/eleve/Images/téléchargement (1).jpeg")
+image = Image.open("fiole.png")
 photo = ImageTk.PhotoImage(image)
  
 
