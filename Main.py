@@ -38,7 +38,7 @@ def compte_click(event):
     if x >= fiole_coords[0] and x <= fiole_coords[0] + image.size[0]:
         if y >= fiole_coords[1] and y <= fiole_coords[1] + image.size[1]:
             compteur_click += 1
-            texte.set(text = "Nombre de recherche :" + str(compteur_click))
+            texte.set(texte = "Nombre de recherche :" + str(compteur_click))
    
    
 # Création d'un widget Label (texte 'Résultat -> x')
