@@ -22,7 +22,7 @@ photo = ImageTk.PhotoImage(image)
  
 
 
-canvas = Canvas(fn, width=320, height=155)
+canvas = Canvas(fn, width=214, height=259)
 canvas.pack()
 
 
